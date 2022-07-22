@@ -28,33 +28,36 @@ a {
   line-height: 19px;
   color: var(--title-color);
 }
-// main
-main {
+
+// section preview
+
+.preview {
   display: flex;
   flex-direction:column;
   align-items: center;
   justify-content: center;
   margin-top: 110px;
 
-  .main-description {
+  .preview__description {
     margin-top: 35px;
   }
 
-  .button-container {
+  .preview__button-container {
     display: flex;
     align-items: center;
     gap: 20px;
     margin-top: 40px;
 
-    .button-discover {
+    .preview__button-discover {
       color: var(--button-color);
       background-color: white;
     }
-
-    .container-table {
-
-    }
   }
+}
+
+.preview__title{
+  width: 953px;
+  text-align: center;
 }
 
 .main-h2 {
@@ -69,4 +72,209 @@ main {
   width: 700px;
   text-align: center;
   margin-top: 30px;
+}
+
+// section article
+
+.article {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+}
+
+.article__h2 {
+  width: 895px;
+  font-size: 42px;
+  text-align: center;
+}
+
+.article__p {
+  padding: 30px 0;
+  width: 780px;
+  text-align: center
+}
+
+.article__button {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 32px;
+  color: var(--button-color);
+  border: none;
+  background: rgba(5, 85, 255, 0.1);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  padding: 10px 30px;
+  gap: 5px;
+}
+
+// section content
+
+.content__container {
+  display: flex;
+  justify-content: center;
+}
+
+.content__text-section {
+  margin: 0 120px;
+  padding-top: 85px;
+  width: 510px;
+}
+
+.content__description {
+  padding: 30px 0 40px 0;
+}
+
+.content__span {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  border-bottom: 1px solid #0555FF;
+}
+ // footer
+
+footer {
+  height: 960px;
+  background: #130C3A;
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.footer__h2 {
+  padding: 150px 0 40px 0;
+  width: 740px;
+  color: white;
+  text-align: center;
+}
+
+.footer__container-input {
+  display: flex;
+}
+
+.footer_input {
+  padding: 30px;
+  width: 520px;
+  height: 50px;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 32px;
+  color: #C1C1C1;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px 0px 0px 10px;
+  background: transparent;
+
+}
+
+.footer__button {
+  width: 200px;
+  height: 60px;
+  background: #0555FF;
+  border-radius: 0px 10px 10px 0px;
+  border: 2px solid #0555FF;
+  color: white;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.footer__container-info {
+  display: flex;
+  padding: 0 350px 0 310px;
+  gap: 110px;
+}
+
+.footer__ul {
+
+  display: flex;
+  flex-direction:column;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  color: #7884A6;
+}
+.footer__li-header {
+  font-weight: bold;
+  color: white;
+  padding: 190px 0 19px 0;
+}
+
+.footer__li-header-first {
+  padding-right: 300px;
+}
+.footer__bottom-line {
+  width: 100%;
+  height: 60px;
+  background: #0F0937;
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+// section reviews
+
+.reviews {
+  text-align: center;
+  padding: 150px 0 150px 0;
+  background: #F8F8FA;
+}
+
+.preview__container--board {
+  display: grid;
+  grid-template-columns: 420px 420px 420px;
+  grid-template-rows: 370px 370px;
+  gap: 30px;
+  justify-content: center;
+}
+
+.preview__container-comments {
+  display: grid;
+  background: white;
+  grid-template-areas:
+      "A B B D"
+      "A C C D"
+      "E E E E"
+      "F F F F"
+}
+
+.reviews_board-comments-img-grid-1 {
+  grid-area: A;
+  justify-self : center;
+  align-self : center;
+}
+.reviews_board-comments-span-grid-1 {
+  grid-area: B;
+  justify-items: stretch;
+  justify-self : start;
+  align-self : end;
+}
+.reviews_board-comments-span-grid-2 {
+  grid-area: C;
+  justify-items: stretch;
+  justify-self : start;
+  align-self : center;
+  height: 40px;
+}
+.reviews_board-comments-img-grid-2 {
+  grid-area: D;
+  justify-self : center;
+  align-self : center;
+}
+.reviews_board-comments-p-grid-1 {
+  grid-area: E;
+  padding: 0 10px;
+  text-align: start;
+}
+
+.reviews_board-comments-p-grid-2 {
+  grid-area: F;
+  padding: 0 10px;
+  text-align: start;
+}
+.secondary-title {
+  padding: 40px 0 70px 0;
 }
