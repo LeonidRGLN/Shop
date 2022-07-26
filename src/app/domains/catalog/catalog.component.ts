@@ -23,7 +23,11 @@ export class CatalogComponent implements OnInit {
       .subscribe((value:any) => this.products = value)
   }
 
-  log() {
+  log(event: any) {
+    console.log(event.target.value)
+  }
+
+  log2() {
     console.log(this.products)
   }
 }

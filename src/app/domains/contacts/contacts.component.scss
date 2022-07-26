@@ -1,0 +1,15 @@
+.section-contacts {
+  padding: 100px 0 100px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction:column;
+  gap: 20px;
+
+  .section-contacts__container-contacts {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction:column;
+  }
+}

@@ -1,9 +1,9 @@
 <section class="catalog-section container">
-  <h1 class="secondary-title" (click)="log()">Каталог товаров</h1>
+  <h1 class="secondary-title" (click)="log2()">Каталог товаров</h1>
   <form class="catalog-section__form"method="get">
     <p>
       <label class="description" for="catalog">Выберите категорию: </label>
-      <select class="description" id="catalog" name="catalog">
+      <select class="description" id="catalog" name="catalog" (change)="log($event)">
         <option selected="true" disabled="disabled">Выберите значение</option>
         <option value="phone">Телефоны</option>
         <option value="notebook">Ноутбуки</option>
