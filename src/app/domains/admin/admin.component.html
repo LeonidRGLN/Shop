@@ -1,0 +1,34 @@
+<section class="admin-section container">
+  <form class="admin-form" [formGroup]="myForm" (submit)="addProduct(myForm)">
+    <h1 class="secondary-title">Create product</h1>
+    <div class="form-group">
+      <input type="text" placeholder="Type" class="form-control" name="type" formControlName="productType">
+      <div class="alert-danger"
+         *ngIf="myForm.controls['productType'].invalid && myForm.controls['productType'].touched">
+      Введите корректные данные
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Title" class="form-control" name="title" formControlName="productTitle">
+      <div class="alert-danger"
+         *ngIf="myForm.controls['productTitle'].invalid && myForm.controls['productTitle'].touched">
+        Введите корректные данные
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Price" class="form-control" name="price" formControlName="productPrice">
+      <div class="alert-danger"
+         *ngIf="myForm.controls['productPrice'].invalid && myForm.controls['productPrice'].touched">
+        Введите корректные данные
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder="Img" class="form-control" name="img" formControlName="productImg">
+      <div class="alert-danger"
+         *ngIf="myForm.controls['productImg'].invalid && myForm.controls['productImg'].touched">
+        Введите корректные данные
+      </div>
+    </div>
+    <button class="button" [disabled]="myForm.invalid">Submit</button>
+  </form>
+</section>
