@@ -1,12 +1,14 @@
-.admin-section {
-  padding: 100px 0 100px 0;
+.sign-in-section{
+  padding: 0 0 100px 0;
   background: url("../../../assets/img/table-right.png");
   min-height: 100vh;
   display: flex;
+  flex-direction:column;
+  gap: 30px;
   justify-content: center;
   align-items: center;
 
-  .admin-form {
+  .sign-in-form {
     width: 40%;
     border-radius: 10px;
     background-color: rgba(0, 75, 255, 0.3);
@@ -20,13 +22,7 @@
 
     .form-group {
       width: 100%;
-      position: relative;
-
-      .alert-danger {
-        position: absolute;
-        left: 15px;
-        font-size: 12px;
-      }
+      height: 60px;
 
       input {
         width: 100%;
@@ -44,10 +40,3 @@
     }
   }
 }
-
-
-
-
-
-
-

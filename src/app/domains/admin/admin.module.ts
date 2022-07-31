@@ -5,6 +5,7 @@ import {AdminComponent} from "./admin.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductService} from "../../services/product.service";
+import {AdminGuard} from "../../services/admin.guard";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import {ProductService} from "../../services/product.service";
     AdminRoutingModule
   ],
   exports: [],
-  providers: [ProductService]
+  providers: [ProductService, AdminGuard]
 })
 
 export class AdminModule {}

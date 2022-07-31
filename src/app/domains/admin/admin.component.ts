@@ -24,6 +24,7 @@ export class AdminComponent {
   addProduct({value: {productType, productTitle, productPrice, productImg}}: any) {
     this.httpService.createProduct({productType, productTitle, productPrice, productImg})
     this.myForm.reset()
+    alert("продукт отправлен")
   }
 
 }

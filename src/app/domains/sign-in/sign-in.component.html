@@ -1,0 +1,23 @@
+<section class="sign-in-section container">
+  <a routerLink="/admin">Admin</a>
+  <form class="sign-in-form" [formGroup]="myForm">
+    <h1 class="secondary-title">Sign in</h1>
+    <div class="form-group">
+      <input type="text" placeholder="Email" class="form-control" name="Email" formControlName="userEmail" #emailSignup>
+      <div class="alert-danger"
+           *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
+        Некорректный email
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Password" class="form-control" name="price" formControlName="userPassword" #passwordSignup>
+      <div class="alert-danger"
+           *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched">
+        Введите корректные данные
+      </div>
+    </div>
+
+    <button class="button" [disabled]="myForm.invalid"  (click)="onSignin(emailSignup.value, passwordSignup.value)">Sign in</button>
+  </form>
+<!--    <button class="button" (click)="handleLogout()">Logout</button>-->
+</section>

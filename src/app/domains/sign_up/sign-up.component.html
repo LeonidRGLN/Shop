@@ -1,0 +1,28 @@
+<section class="sign-up-section container">
+  <form class="sign-up-form" [formGroup]="myForm">
+    <h1 class="secondary-title">Sign up</h1>
+    <div class="form-group">
+      <input type="text" placeholder="Name" class="form-control" name="Name" formControlName="userName" >
+      <div class="alert-danger"
+           *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched">
+        Не указано имя
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="email" placeholder="Email" class="form-control" name="Email" formControlName="userEmail" #emailSignup>
+      <div class="alert-danger"
+           *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">
+        Некорректный email
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="password" placeholder="Password" class="form-control" name="price" formControlName="userPassword" #passwordSignup>
+      <div class="alert-danger"
+           *ngIf="myForm.controls['userPassword'].invalid && myForm.controls['userPassword'].touched">
+        Введите корректные данные
+      </div>
+    </div>
+
+    <button class="button" [disabled]="myForm.invalid"  (click)="onSignup(emailSignup.value, passwordSignup.value)">Sign up</button>
+  </form>
+</section>

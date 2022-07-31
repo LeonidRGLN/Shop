@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../interfaces/product.interface";
-import {map} from "rxjs";
+import {BehaviorSubject, filter, map} from "rxjs";
 
 @Component({
   templateUrl: 'catalog.component.html',
@@ -9,9 +9,14 @@ import {map} from "rxjs";
   providers: []
 })
 
-export class CatalogComponent implements OnInit {
+export class CatalogComponent implements OnInit, AfterViewInit, OnDestroy{
 
   products: Product[] = []
+  data: Product[] = []
+
+  // term: string = ''
+
+  sub = new BehaviorSubject<string>('')
 
   constructor(private httpService: ProductService) {}
 
@@ -20,14 +25,26 @@ export class CatalogComponent implements OnInit {
       .pipe(
         map(value => Object.values(value))
       )
-      .subscribe((value:any) => this.products = value)
+      .subscribe((value: Product[]) => {
+        this.products = value
+        this.data = value
+      })
   }
 
-  log(event: any) {
-    console.log(event.target.value)
+  ngAfterViewInit(): void {
+
+    this.sub
+      .subscribe((value) => {
+        this.data = this.products.filter((product) => product.productType === value)
+        console.log(this.data)
+      })
   }
 
-  log2() {
-    console.log(this.products)
+  ngOnDestroy(): void {
+      this.sub.unsubscribe()
+  }
+
+  event(event: any) {
+    this.sub.next(event.target.value)
   }
 }
