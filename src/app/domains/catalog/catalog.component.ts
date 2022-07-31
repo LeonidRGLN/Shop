@@ -32,11 +32,9 @@ export class CatalogComponent implements OnInit, AfterViewInit, OnDestroy{
   }
 
   ngAfterViewInit(): void {
-
     this.sub
       .subscribe((value) => {
         this.data = this.products.filter((product) => product.productType === value)
-        console.log(this.data)
       })
   }
 
@@ -44,7 +42,7 @@ export class CatalogComponent implements OnInit, AfterViewInit, OnDestroy{
       this.sub.unsubscribe()
   }
 
-  event(event: any) {
+  showProducts(event: any) {
     this.sub.next(event.target.value)
   }
 }
