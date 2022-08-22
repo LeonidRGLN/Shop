@@ -17,12 +17,13 @@ export class AdminComponent {
       'productType': ['', [Validators.required]],
       'productTitle': ['', [Validators.required]],
       'productPrice': ['', [Validators.required]],
-      'productImg': ['', [Validators.required]]
+      'productImg': ['', [Validators.required]],
+      'productId': ['', [Validators.required]]
     })
   }
 
-  addProduct({value: {productType, productTitle, productPrice, productImg}}: any) {
-    this.httpService.createProduct({productType, productTitle, productPrice, productImg})
+  addProduct({value: {productType, productTitle, productPrice, productImg, productId}}: any) {
+    this.httpService.createProduct({productType, productTitle, productPrice, productImg, productId})
     this.myForm.reset()
     alert("продукт отправлен")
   }

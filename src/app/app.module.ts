@@ -6,6 +6,7 @@ import { HomeComponent } from './domains/home/home.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {FirebaseSignUpService} from "./services/firebase.sign-up.service";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import {FirebaseSignUpService} from "./services/firebase.sign-up.service";
     }),
     AppRoutingModule
   ],
+  exports:[],
   providers: [FirebaseSignUpService],
   bootstrap: [AppComponent]
 })

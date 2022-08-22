@@ -1,9 +1,10 @@
-
-
 <section class="catalog-section container">
-  <h1 class="secondary-title" >Каталог товаров</h1>
-<!--  <input type="text" [(ngModel)]="term" >-->
-  <form class="catalog-section__form"method="get">
+  <div class="catalog-section-title">
+    <h1 class="secondary-title" >Каталог товаров</h1>
+    <mat-icon class="catalog-section-basket-button" (click)="showBasketForm()">shopping_basket</mat-icon>
+  </div>
+
+  <form class="catalog-section__form" method="get">
     <p>
       <label class="description" for="catalog">Выберите категорию: </label>
       <select class="description" id="catalog" name="catalog" (change)="showProducts($event)">
@@ -12,17 +13,33 @@
         <option value="notebook">Ноутбуки</option>
         <option value="tablet">Планшеты</option>
       </select>
+<!--      <mat-icon class="catalog-section-select-refresh">refresh</mat-icon>-->
     </p>
 </form>
-
-  <div class="catalog-section__container-card-product" *ngIf="products">
-    <div class="catalog-section__container-product" *ngFor="let product of data">
+  <div *ngIf="stateBasketForm">
+    <mat-icon class="catalog-section-basket-clear" (click)="clearProductInBasket()" *ngIf="stateBasketClear">clear</mat-icon>
+    <div class="basket-form catalog-section__container-card-product">
+      <div class="catalog-section__container-product" *ngFor="let product of basket">
+        <img [src]="product.productImg" alt="">
+        <div class="catalog-section__container-description">
+          <p class="description">Тип устройства: {{product.productType}}</p>
+          <p class="description">Модель: {{product.productTitle}}</p>
+          <p class="description" >Цена: {{product.productPrice}}</p>
+          <button>Купить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="catalog-section__container-card-product" *ngIf="!stateBasketForm">
+    <div class="catalog-section__container-product" *ngFor="let product of products">
       <img [src]="product.productImg" alt="">
       <div class="catalog-section__container-description">
         <p class="description">Тип устройства: {{product.productType}}</p>
         <p class="description">Модель: {{product.productTitle}}</p>
         <p class="description" >Цена: {{product.productPrice}}</p>
+        <button (click)="addProductInBasket(product.productId)">В корзину</button>
       </div>
     </div>
   </div>
+
 </section>

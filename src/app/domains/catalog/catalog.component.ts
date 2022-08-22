@@ -1,7 +1,8 @@
 import {AfterViewInit, Component, OnDestroy, OnInit} from "@angular/core";
 import {ProductService} from "../../services/product.service";
 import {Product} from "../../interfaces/product.interface";
-import {BehaviorSubject, filter, map} from "rxjs";
+import {BehaviorSubject, map, Observable} from "rxjs";
+import {Database} from "../../interfaces/database.interface";
 
 @Component({
   templateUrl: 'catalog.component.html',
@@ -11,38 +12,76 @@ import {BehaviorSubject, filter, map} from "rxjs";
 
 export class CatalogComponent implements OnInit, AfterViewInit, OnDestroy{
 
+  dataFireBase: Product[] = []
   products: Product[] = []
-  data: Product[] = []
+  // refreshProducts:Product[] = []
+  productObservable$: Observable<Database> = this.productService.getProduct()
+  basketTarget: Product[] | undefined;
+  targetProduct: Product | undefined;
+  basket: Product[] = []
 
-  // term: string = ''
 
-  sub = new BehaviorSubject<string>('')
+  subFilterProducts = new BehaviorSubject<string>('')
+  // sub2 = new BehaviorSubject<any>('')
 
-  constructor(private httpService: ProductService) {}
+  stateBasketClear = false
+  stateBasketForm = false
+
+
+  addProductInBasket(value:number | string) {
+    this.basketTarget = this.dataFireBase.filter((product) => product.productId === value)
+    this.targetProduct = this.basketTarget[0]
+    this.basket.push(this.targetProduct)
+    this.stateBasketClear = true
+  }
+
+  // refreshProduct() {
+  //   this.sub2.next(this.refreshProducts)
+  // }
+
+  clearProductInBasket() {
+    this.basket = []
+    this.stateBasketClear = false
+  }
+
+  showBasketForm() {
+    this.stateBasketForm = !this.stateBasketForm
+  }
+
+  constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.httpService.getProduct()
+    this.productObservable$
       .pipe(
-        map(value => Object.values(value))
+        map((value: Database) => Object.values(value))
       )
       .subscribe((value: Product[]) => {
         this.products = value
-        this.data = value
+        this.dataFireBase = value
+        // this.refreshProducts = value
       })
   }
 
   ngAfterViewInit(): void {
-    this.sub
+    this.subFilterProducts
       .subscribe((value) => {
-        this.data = this.products.filter((product) => product.productType === value)
+        this.products = this.dataFireBase.filter((product) => product.productType === value)
       })
+
+    // this.sub2
+    //   .subscribe((value) => {
+    //     this.data = this.refreshProducts = value
+    //     console.log(this.refreshProducts)
+    //     console.log(this.data)
+    //   })
   }
 
   ngOnDestroy(): void {
-      this.sub.unsubscribe()
+      this.subFilterProducts.unsubscribe()
   }
 
   showProducts(event: any) {
-    this.sub.next(event.target.value)
+    this.subFilterProducts.next(event.target.value)
+    console.log(event)
   }
 }

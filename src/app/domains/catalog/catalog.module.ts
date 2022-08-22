@@ -5,6 +5,7 @@ import {CatalogRoutingModule} from "./catalog-routing.module";
 import {ProductService} from "../../services/product.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import {FormsModule} from "@angular/forms";
     FormsModule,
     HttpClientModule,
     CommonModule,
+    MatIconModule,
     CatalogRoutingModule
 
 
